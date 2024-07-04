@@ -8,3 +8,5 @@ GRANT ALL PRIVILEGES ON amahdiou.* TO 'amahdiou'@'localhost';
 FLUSH PRIVILEGES; " > exec.txt
 
 mariadbd --user=mysql --bootstrap < exec.txt
+
+exec "$@"
