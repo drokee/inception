@@ -4,9 +4,9 @@ RUN apt-get update && apt-get install -y mariadb-server
 
 
 
-# RUN mkdir -p var/run/mysqld
+RUN mkdir -p var/run/mysqld
 
-# RUN chmod 777 var/run/mysqld
+RUN chmod 777 var/run/mysqld
 
 COPY conf/create_db.sh /
 
