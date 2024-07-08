@@ -10,6 +10,6 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '0900';
 GRANT ALL PRIVILEGES ON *.* TO 'amahdiou'@'%';
 FLUSH PRIVILEGES; " > exec.txt
 
-mariadbd --user=root --bootstrap < exec.txt
+mariadbd --user=mysql --bootstrap < exec.txt
 
 exec "$@"

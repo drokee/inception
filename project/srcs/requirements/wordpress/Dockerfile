@@ -10,6 +10,6 @@ RUN apt install -y curl
 
 COPY ./conf/wp-config-create.sh /
 
-RUN chmod +x wp-config-create.sh
+RUN chmod 777 /wp-config-create.sh
 
-CMD [ "sh", "wp-config-create.sh" ]
+CMD [ "sh", "/wp-config-create.sh" ]
