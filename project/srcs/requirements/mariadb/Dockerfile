@@ -15,5 +15,6 @@ RUN ./create_db.sh
 
 ENTRYPOINT [ "sh", "./create_db.sh"]
 
-CMD ["mariadbd", "--user=mysql"]
+CMD ["mariadbd", "--user=mysql", "--bind-address=0.0.0.0"]
+
 

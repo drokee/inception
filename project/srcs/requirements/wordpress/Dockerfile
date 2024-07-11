@@ -12,4 +12,4 @@ COPY ./conf/wp-config-create.sh /
 
 RUN chmod 777 /wp-config-create.sh
 
-CMD [ "sh", "/wp-config-create.sh" ]
+CMD [ "sh", "wp-config-create.sh" ]

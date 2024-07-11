@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  mariadb:
+    image: mariadb
+    build: 
+      context: /requirement/mariadb
+      dockerfile: Dockerfile
+    container_name: mariadb
+    env_file:
+      - .env
+    expose:
+      - "3306"
+    networks:
+      - inception
+
+  wordpress:
+    image: wordpress
+    build: 
+      context: /requirement/wordpress
+      dockerfile: Dockerfile
+    container_name: wordpress
+    env_file:
+      - .env
+    expose:
+      - "9000"
+    networks:
+      - inception
+
+  nginx:
+    image: nginx
+    build: 
+      context: /requirement/nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    env_file:
+      - .env
+    ports:
+      - "443:443"
+    networks:
+      - inception
+
+networks:
+  inception:
+    name: inception
+    driver: bridge
