@@ -4,14 +4,16 @@ RUN apt-get update && apt-get install -y mariadb-server
 
 
 
-RUN mkdir -p var/run/mysqld
+RUN mkdir -p /run/mysqld
 
-RUN chmod 777 var/run/mysqld
+RUN chown -R mysql:mysql /run/mysqld
+
+RUN chmod 777 /run/mysqld
 
 COPY conf/create_db.sh /
 
-RUN chmod 777 /create_db.sh
-RUN ./create_db.sh
+RUN chmod +x /create_db.sh
+# RUN ./create_db.sh
 
 ENTRYPOINT [ "sh", "./create_db.sh"]
 

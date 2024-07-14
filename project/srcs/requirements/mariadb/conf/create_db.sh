@@ -1,14 +1,14 @@
 #!/bin/bash
 echo "FLUSH PRIVILEGES;
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
-
-CREATE USER $DB_USE @'%' IDENTIFIED BY $DB_PASSWORD;
-
 ALTER USER 'root'@'localhost' IDENTIFIED BY '0900';
 
-GRANT ALL PRIVILEGES ON *.* TO $DB_USER @'%'IDENTIFIED BY $DB_PASSWORD;
+CREATE USER IF NOT EXISTS '$DB_USER'@'%' IDENTIFIED BY '$DB_PASSWORD';
+
+
+GRANT ALL PRIVILEGES ON *.* TO '$DB_USER'@'%';
 FLUSH PRIVILEGES; " > exec.txt
 
-mariadbd --user=mysql --bootstrap < exec.txt
+mariadbd -u mysql --bootstrap < exec.txt
 
 exec "$@"

@@ -4,11 +4,16 @@ services:
   mariadb:
     image: mariadb
     build: 
-      context: /requirement/mariadb
+      context: ./requirements/mariadb
       dockerfile: Dockerfile
     container_name: mariadb
     env_file:
       - .env
+    # environment:
+      # MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      # MYSQL_DATABASE: "${DB_NAME}"
+      # MYSQL_USER: "${DB_USER}"
+      # MYSQL_PASSWORD: "${DB_PASSWORD}"
     expose:
       - "3306"
     networks:
@@ -17,7 +22,7 @@ services:
   wordpress:
     image: wordpress
     build: 
-      context: /requirement/wordpress
+      context: ./requirements/wordpress
       dockerfile: Dockerfile
     container_name: wordpress
     env_file:
@@ -30,7 +35,7 @@ services:
   nginx:
     image: nginx
     build: 
-      context: /requirement/nginx
+      context: ./requirements/nginx
       dockerfile: Dockerfile
     container_name: nginx
     env_file:
