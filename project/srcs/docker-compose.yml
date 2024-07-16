@@ -9,11 +9,8 @@ services:
     container_name: mariadb
     env_file:
       - .env
-    # environment:
-      # MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
-      # MYSQL_DATABASE: "${DB_NAME}"
-      # MYSQL_USER: "${DB_USER}"
-      # MYSQL_PASSWORD: "${DB_PASSWORD}"
+    volumes:
+      - mariadb:/var/lib/mysql
     expose:
       - "3306"
     networks:
@@ -27,6 +24,8 @@ services:
     container_name: wordpress
     env_file:
       - .env
+    volumes:
+      - wordpress:/var/www/html/wordpress
     expose:
       - "9000"
     networks:
@@ -40,6 +39,8 @@ services:
     container_name: nginx
     env_file:
       - .env
+    volumes:
+      - wordpress:/var/www/html/wordpress
     ports:
       - "443:443"
     networks:
@@ -49,3 +50,16 @@ networks:
   inception:
     name: inception
     driver: bridge
+volumes:
+  mariadb:
+    name: mariadb
+    driver_opts:
+      type: none
+      o: bind
+      device:  /home/amahdiou/data/mariadb
+  wordpress:
+    name: wordpress
+    driver_opts:
+      type: none
+      o : bind
+      device :  /home/amahdiou/data/wordpress
