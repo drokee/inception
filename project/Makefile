@@ -4,6 +4,8 @@ all :
 
 clean :
 	@docker-compose -f srcs/docker-compose.yml down
+	@sudo rm -rf /home/amahdiou/data/mariadb/ /home/amahdiou/data/wordpress/
+
 
 fclean : clean
 	@docker system prune -af

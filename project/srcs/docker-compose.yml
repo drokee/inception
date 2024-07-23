@@ -50,6 +50,7 @@ networks:
   inception:
     name: inception
     driver: bridge
+    
 volumes:
   mariadb:
     name: mariadb
